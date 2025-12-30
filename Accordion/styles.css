@@ -1,0 +1,25 @@
+[name="accordion"] {
+    font-family: sans-serif;
+    border: 1px solid lightgrey;
+    border-radius: 0.5rem;
+    width: 50%;
+    cursor: pointer;
+
+    .content {
+        padding: 0.5rem;
+        margin: 0;
+        background-color: lightgray;
+    }
+
+    .summary {
+        padding: 0.5rem;
+    }
+}
+
+[name="accordion"]:hover {
+    box-shadow: 2px 2px 2px 1px #e6e6e6;
+}
+
+[name='accordion'] + [name='accordion'] {
+    margin-top: 1rem;
+}
