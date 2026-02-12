@@ -22,7 +22,7 @@ export function accordion ($rootEl, {sections}) {
 
         const $accordionSections = document.createDocumentFragment();
 
-        sections.forEach(({value, title, contents}) => {
+        sections.forEach(({value}) => {
             const $accordionSection = document.createElement('div');
             $accordionSection.classList.add('accordion-item');
 
