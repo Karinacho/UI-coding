@@ -1,6 +1,3 @@
-import arrowUp from '../../assets/arrow-up.svg';
-import arrowDown from '../../assets/arrow-down.svg';
-
 export function accordion ($rootEl, {sections}) {
     function attachEvents() {
         //Use Event Delegation
