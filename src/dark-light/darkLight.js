@@ -1,18 +1,16 @@
 import { gsap } from "gsap";
 
+const root = document.documentElement;
+const switchButton = document.querySelector('#theme-switcher');
+
+switchButton.addEventListener('click', toggleSeason)
 
 function toggleSeason() {
-    const body = document.querySelector('body');
-    const switchButton = document.querySelector('#theme-switcher');
-    let currentSeason = 'winter';
+    const currentSeason = root.getAttribute('data-season');
+    let newSeason = currentSeason === 'winter' ? 'spring' : 'winter';
+    root.setAttribute('data-season', newSeason);
+}
 
-    switchButton.addEventListener('click', () => {
-        currentSeason = currentSeason === 'winter' ? 'spring' : 'winter';
-        body.classList.toggle('winter');
-        switchButton.classList.toggle('switch-winter');
-        addSnowflakes()
-    })
- }
 
  function createSnowflake() {
      const snowflakesContainer = document.querySelector('.snowflakes');
@@ -106,4 +104,4 @@ function animateSnowflake(snowflake, startX) {
  }
 
 
- toggleSeason()
+addSnowflakes()

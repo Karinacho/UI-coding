@@ -1,3 +1,12 @@
+html[data-season="winter"] {
+    background: linear-gradient(to bottom, #1a2a3a 0%, #2d4a5c 100%);
+
+    #theme-switcher::after {
+        background-color: aquamarine;
+        left: 66%;
+    }
+}
+
 body {
     min-height: 100vh;
     display: flex;
@@ -6,10 +15,6 @@ body {
     align-items: center;
     margin: 0;
     gap: 0.5rem;
-
-    &.winter {
-        background: linear-gradient(to bottom, #1a2a3a 0%, #2d4a5c 100%);
-    }
 }
 
 .snowflakes {
@@ -50,11 +55,6 @@ body {
         border-radius: 50%;
         transform: translateY(-50%);
         transition: 0.4s ease;
-    }
-
-    &.switch-winter::after {
-        background-color: aquamarine;
-        left: 66%;
     }
 }
 
