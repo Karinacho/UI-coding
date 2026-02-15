@@ -1,13 +1,15 @@
 import { gsap } from "gsap";
 
 
-function toggleDarkLight() {
+function toggleSeason() {
     const body = document.querySelector('body');
     const switchButton = document.querySelector('#theme-switcher');
+    let currentSeason = 'winter';
 
     switchButton.addEventListener('click', () => {
-        body.classList.toggle('active');
-        switchButton.classList.toggle('switch-active');
+        currentSeason = currentSeason === 'winter' ? 'spring' : 'winter';
+        body.classList.toggle('winter');
+        switchButton.classList.toggle('switch-winter');
         addSnowflakes()
     })
  }
@@ -55,12 +57,44 @@ function toggleDarkLight() {
                  rotation: 0,
                  opacity: 1
              });
-             // animateSnowflake(snowflake, startX);
+            animateSnowflake(snowflake, startX);
          }
      })
 
-
+     // Responsive: recreate snowflakes on window resize
+     let resizeTimeout;
+     window.addEventListener('resize', () => {
+         clearTimeout(resizeTimeout);
+         resizeTimeout = setTimeout(() => {
+             snowflakesContainer.innerHTML = '';
+             for (let i = 0; i < 150; i++) {
+                 createSnowflake();
+             }
+         }, 250);
+     });
  }
+
+function animateSnowflake(snowflake, startX) {
+    const duration = Math.random() * 6 + 8;
+
+    gsap.to(snowflake, {
+        y: window.innerHeight + 50,
+        x: '+=' + (Math.random() * 100 - 50),
+        rotation: Math.random() * 360,
+        opacity: 0.3,
+        duration: duration,
+        ease: 'none',
+        onComplete: () => {
+            gsap.set(snowflake, {
+                y: -20,
+                x: startX,
+                rotation: 0,
+                opacity: 1
+            });
+            animateSnowflake(snowflake, startX);
+        }
+    });
+}
 
  function addSnowflakes() {
 
@@ -71,4 +105,5 @@ function toggleDarkLight() {
      }
  }
 
- toggleDarkLight()
+
+ toggleSeason()

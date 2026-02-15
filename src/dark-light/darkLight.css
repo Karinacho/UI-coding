@@ -1,7 +1,14 @@
 body {
-    &.active {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    gap: 0.5rem;
+
+    &.winter {
         background: linear-gradient(to bottom, #1a2a3a 0%, #2d4a5c 100%);
-        min-height: 100vh;
     }
 }
 
@@ -21,7 +28,6 @@ body {
 #theme-switcher {
    position: relative;
     /*giving align-content:position relative so that we can use pseudo elements which are ::before and ::after;*/
-    margin-right: 10%;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -46,10 +52,16 @@ body {
         transition: 0.4s ease;
     }
 
-    &.switch-active::after {
+    &.switch-winter::after {
         background-color: aquamarine;
         left: 66%;
     }
+}
+
+.theme-switcher__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
